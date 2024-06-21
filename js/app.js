@@ -12,10 +12,16 @@ const s5 = document.querySelector('#s5')
 const s6 = document.querySelector('#s6')
 const s7 = document.querySelector('#s7')
 const s8 = document.querySelector('#s8')
+/*
+Notes for tomorrow:
+The arrays below that contains the winning combinations wins.
+*/
+const xMarks = []
+const oMarks = []
 
 
 /*---------------------------- Variables (state) ----------------------------*/
-
+let alternateMark = true
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -23,13 +29,32 @@ const s8 = document.querySelector('#s8')
 
 
 /*-------------------------------- Functions --------------------------------*/
-const createMark = (el, target) => {
+const winner = () => {
+    console.log(s0.innerText)
+}
+
+const createMark = (char, target) => {
     const mark = document.createElement('h3')
-    mark.textContent = el
+    mark.textContent = char
     target.appendChild(mark)
 }
+
 const handleClick = (e) => {
-    console.log('Click register at s0', e.target.className)
+    let mark = null
+    const elId = e.target.id
+    if (alternateMark) {
+        mark = x
+        xMarks.push(elId)
+        console.log(`Mark pushed ${xMarks}`)
+        alternateMark = false
+    }else{
+        mark = o
+        alternateMark = true
+    }
+    const target = e.target
+    // console.log('Click register at', elId)
+    // console.log(alternateMark)
+    createMark(mark, target)
 }
 
 /*----------------------------- Event Listeners -----------------------------*/
