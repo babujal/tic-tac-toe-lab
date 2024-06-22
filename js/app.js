@@ -14,8 +14,9 @@ const s7 = document.querySelector('#s7')
 const s8 = document.querySelector('#s8')
 /*
 Notes for tomorrow:
-The arrays below that contains the winning combinations wins.
+The arrays below that contains the winning combinations wins. If one of the marks includes
 */
+
 const xMarks = []
 const oMarks = []
 
@@ -29,8 +30,89 @@ let alternateMark = true
 
 
 /*-------------------------------- Functions --------------------------------*/
-const winner = () => {
-    console.log(s0.innerText)
+const checkForWinner = (id, mark) => {
+
+    if (id === 's0') {
+        if (mark===x && xMarks.includes('s1') && xMarks.includes('s2') || mark===x && xMarks.includes('s4') && xMarks.includes('s8') || mark===x && xMarks.includes('s3') && xMarks.includes('s6')) {
+            return true
+        } else if (oMarks.includes('s1') && oMarks.includes('s2') || oMarks.includes('s4') && oMarks.includes('s8') || oMarks.includes('s3') && oMarks.includes('s6')) {
+            return true
+        } else {
+            return false
+        }
+    }
+    if (id === 's1') {
+        if (mark===x && xMarks.includes('s0') && xMarks.includes('s2') || mark===x && xMarks.includes('s4') && xMarks.includes('s7')) {
+            return true
+        } else if (oMarks.includes('s0') && oMarks.includes('s2') || oMarks.includes('s4') && oMarks.includes('s7')) {
+            return true
+        } else {
+            return false
+        }
+    }
+    if (id === 's2') {
+        if (mark===x && xMarks.includes('s1') && xMarks.includes('s0') || mark===x && xMarks.includes('s4') && xMarks.includes('s6') || mark===x && xMarks.includes('s5') && xMarks.includes('s8')) {
+            return true
+        } else if (oMarks.includes('s1') && oMarks.includes('s0') || oMarks.includes('s4') && oMarks.includes('s6') || oMarks.includes('s5') && oMarks.includes('s8')) {
+            return true
+        } else {
+            return false
+        }
+    }
+    if (id === 's3') {
+        if (mark===x && xMarks.includes('s0') && xMarks.includes('s6') || mark===x && xMarks.includes('s4') && xMarks.includes('s5')) {
+            return true
+        } else if (oMarks.includes('s0') && oMarks.includes('s6') || oMarks.includes('s4') && oMarks.includes('s5')) {
+            return true
+        } else {
+            return false
+        }
+    }
+    if (id === 's4') {
+        if (mark===x && xMarks.includes('s1') && xMarks.includes('s7') || mark===x && xMarks.includes('s3') && xMarks.includes('s5') || mark===x && xMarks.includes('s0') && xMarks.includes('s8')) {
+            return true
+        } else if (oMarks.includes('s1') && oMarks.includes('s7') || oMarks.includes('s3') && oMarks.includes('s5') || oMarks.includes('s0') && oMarks.includes('s8')) {
+            return true
+        } else {
+            return false
+        }
+    }
+    if (id === 's5') {
+        if (mark===x && xMarks.includes('s2') && xMarks.includes('s8') || mark===x && xMarks.includes('s4') && xMarks.includes('s3')) {
+            return true
+        } else if (oMarks.includes('s2') && oMarks.includes('s8') || oMarks.includes('s4') && oMarks.includes('s3')) {
+            return true
+        } else {
+            return false
+        }
+    }
+    if (id === 's6') {
+        if (mark===x && xMarks.includes('s0') && xMarks.includes('s3') || mark===x && xMarks.includes('s4') && xMarks.includes('s2') || mark===x && xMarks.includes('s7') && xMarks.includes('s8')) {
+            return true
+        } else if (oMarks.includes('s0') && oMarks.includes('s3') || oMarks.includes('s4') && oMarks.includes('s2') || oMarks.includes('s7') && oMarks.includes('s8')) {
+            return true
+        } else {
+            return false
+        }
+    }
+    if (id === 's7') {
+        if (mark===x && xMarks.includes('s4') && xMarks.includes('s1') || mark===x && xMarks.includes('s6') && xMarks.includes('s8')) {
+            return true
+        } else if (oMarks.includes('s4') && oMarks.includes('s1') || oMarks.includes('s6') && oMarks.includes('s8')) {
+            return true
+        } else {
+            return false
+        }
+    }
+    if (id === 's8') {
+        if (mark===x && xMarks.includes('s4') && xMarks.includes('s0') || mark===x && xMarks.includes('s7') && xMarks.includes('s6') || mark===x && xMarks.includes('s5') && xMarks.includes('s2')) {
+            return true
+        } else if (oMarks.includes('s4') && oMarks.includes('s0') || oMarks.includes('s7') && oMarks.includes('s6') || oMarks.includes('s5') && oMarks.includes('s2')) {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 const createMark = (char, target) => {
@@ -42,16 +124,22 @@ const createMark = (char, target) => {
 const handleClick = (e) => {
     let mark = null
     const elId = e.target.id
-    if (alternateMark) {
+    const target = e.target
+    if (alternateMark && !e.target.innerText) {
         mark = x
         xMarks.push(elId)
-        console.log(`Mark pushed ${xMarks}`)
+        console.log(checkForWinner(elId, mark))
+        console.log(`Marks pushed on X ${xMarks}`)
+        //call winner here
+        // console.log(`Mark pushed on x ${xMarks}`)
         alternateMark = false
-    }else{
+    } else if (!alternateMark && !e.target.innerText) {
         mark = o
+        oMarks.push(elId)
+        console.log(checkForWinner(elId, mark))
+        console.log(`Marks pushed on O ${oMarks}`)
         alternateMark = true
     }
-    const target = e.target
     // console.log('Click register at', elId)
     // console.log(alternateMark)
     createMark(mark, target)
