@@ -18,25 +18,3 @@ body {
     font-size: 64px;
     text-align: center;
   }
-  
-
-  /* const checkForWinner = (id) => {
-    if (id === 's0'){
-        if (xMarks.includes('s1') && xMarks.includes('s2') || xMarks.includes('s4') && xMarks.includes('s8')) {
-            return true
-        }else if(oMarks.includes('s1') && oMarks.includes('s2') || oMarks.includes('s4') && oMarks.includes('s7')){
-            return true
-        }else{
-            return false
-        }
-    }
-    if (id === 's1'){
-        if (xMarks.includes('s0') && xMarks.includes('s2') || xMarks.includes('s4') && xMarks.includes('s7')) {
-            return true
-        }else if(oMarks.includes('s0') && oMarks.includes('s2') || oMarks.includes('s4') && oMarks.includes('s7')){
-            return true
-        }else{
-            return false
-        }
-    }
-} */

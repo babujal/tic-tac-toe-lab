@@ -14,7 +14,7 @@ const s7 = document.querySelector('#s7')
 const s8 = document.querySelector('#s8')
 /*
 Notes for tomorrow:
-The arrays below that contains the winning combinations wins. If one of the marks includes
+Start displaying whom turn is and who is the winner. After that, Time for CSS
 */
 
 const xMarks = []
@@ -130,8 +130,6 @@ const handleClick = (e) => {
         xMarks.push(elId)
         console.log(checkForWinner(elId, mark))
         console.log(`Marks pushed on X ${xMarks}`)
-        //call winner here
-        // console.log(`Mark pushed on x ${xMarks}`)
         alternateMark = false
     } else if (!alternateMark && !e.target.innerText) {
         mark = o
@@ -140,8 +138,6 @@ const handleClick = (e) => {
         console.log(`Marks pushed on O ${oMarks}`)
         alternateMark = true
     }
-    // console.log('Click register at', elId)
-    // console.log(alternateMark)
     createMark(mark, target)
 }
 
