@@ -147,7 +147,7 @@ const checkForWinner = (id, mark) => {
             }
         }
         if (mark === o) {
-            if (weHAveAWinner === false && oMarks.includes('s1') && oMarks.includes('s7') || weHAveAWinner === false && oMarks.includes('s3') && oMarks.includes('s5') || weHAveAWinner === false && oMarks.includes('s0') && oMarks.includes('s8') || weHAveAWinner === false && xMarks.includes('s2') && xMarks.includes('s6')) {
+            if (weHAveAWinner === false && oMarks.includes('s1') && oMarks.includes('s7') || weHAveAWinner === false && oMarks.includes('s3') && oMarks.includes('s5') || weHAveAWinner === false && oMarks.includes('s0') && oMarks.includes('s8') || weHAveAWinner === false && oMarks.includes('s2') && oMarks.includes('s6')) {
                 prompt.innerText = 'O WINS!'
                 weHAveAWinner = true
                 return true
