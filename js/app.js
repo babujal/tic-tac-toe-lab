@@ -11,6 +11,7 @@ const s5 = document.querySelector('#s5')
 const s6 = document.querySelector('#s6')
 const s7 = document.querySelector('#s7')
 const s8 = document.querySelector('#s8')
+const board = [s0, s1, s2, s3, s4, s5, s6, s7, s8]
 const btn = document.querySelector('button')
 
 const xMarks = []
@@ -34,15 +35,19 @@ const reset = () => {
     xMarks.splice(0, xMarks.length)
     oMarks.splice(0, oMarks.length)
     prompt.innerText = `Let's Play!`
-    s0.innerText = ''
-    s1.innerText = ''
-    s2.innerText = ''
-    s3.innerText = ''
-    s4.innerText = ''
-    s5.innerText = ''
-    s6.innerText = ''
-    s7.innerText = ''
-    s8.innerText = ''
+    //A forEach takes care of clearing the sqr class in 3 lines. The code below the forEach achives the same but in 9 lines
+    board.forEach(i => {
+        i.innerText = ''
+    });
+    // s0.innerText = ''
+    // s1.innerText = ''
+    // s2.innerText = ''
+    // s3.innerText = ''
+    // s4.innerText = ''
+    // s5.innerText = ''
+    // s6.innerText = ''
+    // s7.innerText = ''
+    // s8.innerText = ''
 }
 
 const checkForWinner = (id, mark) => {
